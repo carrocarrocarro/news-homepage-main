@@ -15,6 +15,7 @@ $very-dark-blue: hsl(240, 100%, 5%);
 img {
     max-width: 100%;
     display: block;
+    height: auto;
 }
 
 body {
@@ -35,17 +36,19 @@ h1 {
 p {
     font-size: 15px;
     color:$dark-grayish-blue-color;
+    line-height: 1.75;
+    margin-bottom: 1rem;
 }
 
 .btn {
     text-transform: uppercase;
     color: $off-white-color;
     background-color: $primary-color-sift-red;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     padding:1em 2em;
     border: none;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     text-align: center;
 
     a:hover {
@@ -64,19 +67,12 @@ p {
 
 .site-wrapper {
     flex: 1 0 auto;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-
-    @media (min-width: 600px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
     .site-header {
         position: relative;
-        grid-column: 1 /-1;
         display: flex;
         
-        /* justify-content: space-between; */
+        justify-content: space-between;
 
         .logotype-wrapper {
             padding:1em;
@@ -98,21 +94,38 @@ p {
             display: none;
             align-items: center;
 
+            @media (min-width: 600px) {
+                display: flex;
+                position:static;
+                width: auto;
+                height: auto;
+                margin-right: 1em;
+            }
+
             ul {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
                 gap:2em;
 
+                @media (min-width: 600px) {
+                    flex-direction: row;
+                }
+
                 li {
                     
                     a {
                         font-size: 1.4rem;
                         text-decoration: none;
-                        color: #000
+                        color: #000;
+                        @media (min-width: 600px) {
+                            font-size: 1rem;
+                            color: $dark-grayish-blue-color;
+                        }
                     }
                 }
             }
+            
         }
 
         #site-header--nav-icon {
@@ -120,36 +133,153 @@ p {
             right: 1em;
             top: 23px;
             z-index: 200;
+
+            @media (min-width: 600px) {
+                display: none;
+            }
         }
     }
 
     .main-content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap:3em;
+
+        @media (min-width: 600px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap:3em;
+        }
         margin-inline: 1em;
+    
 
         .hero {
-            #hero-img {
+            display: flex;
+            flex-direction: column;
+            
+            
+            #hero-image {
+                width: 100%;
+                min-height: 350px;
+                background-image: url("../assets/images/image-web-3-mobile.jpg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                
 
+                @media (min-width: 600px) {
+                    background-image: url("../assets/images/image-web-3-desktop.jpg"); 
+                }
             }
             .hero-article {
+                flex: 1;
+                padding: 1em 0;
+                display: flex;
+                flex-direction: column;
 
+                @media (min-width: 600px) {
+                  flex-direction: row;
+                  gap:1em;
+                  padding:1em 0 0 0;  
+                }
+                h1 {
+                    flex: 1;
+                }
+                .text-wrapper {
+                    flex:1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+
+
+            }
+
+            @media (min-width: 600px) {
+                grid-column: 1/3;
             }
 
         }
 
+
         .new-news {
+            grid-column: 1/-1;
             padding:1em;
             background-color: $very-dark-blue;
+            color: $off-white-color;
             
             h2 {
                 color:$primary-color-soft-orange;
+                margin-bottom: 0;
             }
 
             h3 {
                 color: $off-white-color;
+                
             }
+
+            .new-news--item {
+                border-bottom: 1px solid $grayish-blue-color;
+                p {
+                    color:$grayish-blue-color;
+                }
+                padding: 1em 0;
+                &:last-child {
+                    border-bottom:none;
+                }
+            }
+
+            @media (min-width: 600px) {
+                flex-direction: row;
+                grid-column: 3 /-1;
+            }
+
         }
 
         .top-news {
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            gap:1em;
+            @media (min-width: 600px) {
+                gap:3em;
+                grid-template-columns: repeat(3,1fr);
+                grid-template-rows: repeat(2,1fr);
+            }
+
+            .top-news--article {
+                flex:auto;
+                display: grid;
+                gap:1em;
+                grid-template-columns: repeat(3,1fr);
+
+                /* grid-template-columns: repeat(3, 1fr); */
+                
+                .img-wrapper {
+                    grid-column: 1/2;
+
+                    img {
+                        
+                
+                    }
+
+                    @media (min-width:600px) {
+                        grid-row: 1/-1;
+                    }
+                }
+
+                .text-wrapper {
+                    grid-column:2/-1;
+                    
+                    
+                    h3 {
+                        color:$grayish-blue-color;
+                        font-size: 2rem;
+                        margin-top: 0;
+                        margin-bottom: 0;
+                    }
+                }
+            }
 
         }
     }
@@ -159,6 +289,7 @@ p {
 /* Footer */
 
 .site-footer {
+    padding:3em 2em;
     flex-shrink: 0; 
     font-size: 11px; 
     text-align: center; 
