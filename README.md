@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: (https://github.com/carrocarrocarro/news-homepage-main)
-- Live Site URL: (https://carrocarrocarro.github.io/frontendmentor/pricing-component-with-toggle-master/)
+- Live Site URL: (https://melodious-longma-c694b5.netlify.app/)
 
 ## My process
 
